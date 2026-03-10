@@ -1,8 +1,189 @@
-body {
-  margin: 0;
+/* ---------- GLOBAL ---------- */
+
+body{
+margin:0;
+font-family:'Segoe UI',sans-serif;
+color:white;
+min-height:100vh;
+
+/* futuristic background */
+
+background:
+radial-gradient(circle at 20% 20%, rgba(0,255,255,0.15), transparent 40%),
+radial-gradient(circle at 80% 30%, rgba(0,140,255,0.15), transparent 40%),
+radial-gradient(circle at 50% 80%, rgba(0,200,255,0.1), transparent 40%),
+linear-gradient(135deg,#020617,#020c16,#03121f);
+
+background-attachment:fixed;
 }
 
-#root {
-  height: 100vh;
-  width: 100%;
+/* animated tech grid */
+
+body::before{
+content:"";
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+pointer-events:none;
+
+background:
+repeating-linear-gradient(
+0deg,
+rgba(255,255,255,0.03),
+rgba(255,255,255,0.03) 1px,
+transparent 1px,
+transparent 40px
+),
+repeating-linear-gradient(
+90deg,
+rgba(255,255,255,0.03),
+rgba(255,255,255,0.03) 1px,
+transparent 1px,
+transparent 40px
+);
+
+animation:gridMove 35s linear infinite;
+}
+
+@keyframes gridMove{
+0%{transform:translateY(0);}
+100%{transform:translateY(40px);}
+}
+
+/* ---------- CONTAINER ---------- */
+
+.container{
+padding:25px;
+max-width:600px;
+margin:auto;
+}
+
+/* ---------- TITLE ---------- */
+
+h1{
+text-align:center;
+margin-bottom:30px;
+font-size:32px;
+letter-spacing:1px;
+background:linear-gradient(90deg,#00e5ff,#4facfe);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+/* ---------- GLASS CARDS ---------- */
+
+.card{
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(16px);
+border:1px solid rgba(255,255,255,0.08);
+padding:22px;
+border-radius:16px;
+margin-bottom:22px;
+
+box-shadow:
+0 10px 25px rgba(0,0,0,0.4),
+0 0 20px rgba(0,200,255,0.08);
+
+transition:0.35s;
+}
+
+.card:hover{
+transform:translateY(-6px);
+box-shadow:
+0 15px 35px rgba(0,0,0,0.5),
+0 0 30px rgba(0,200,255,0.25);
+}
+
+/* ---------- LIST ---------- */
+
+.card ul{
+padding-left:20px;
+line-height:1.7;
+}
+
+/* ---------- MAP BUTTON ---------- */
+
+.mapButton{
+width:100%;
+padding:16px;
+border:none;
+border-radius:12px;
+font-size:16px;
+font-weight:600;
+
+background:linear-gradient(45deg,#00c6ff,#0072ff);
+color:white;
+cursor:pointer;
+margin-top:15px;
+
+transition:0.3s;
+}
+
+.mapButton:hover{
+transform:scale(1.05);
+box-shadow:
+0 0 25px #00c6ff,
+0 0 40px #0072ff;
+}
+
+/* ---------- TOP BAR ---------- */
+
+.topbar{
+display:flex;
+align-items:center;
+gap:18px;
+padding:16px 20px;
+
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(12px);
+border-bottom:1px solid rgba(255,255,255,0.08);
+
+box-shadow:0 4px 20px rgba(0,0,0,0.4);
+}
+
+/* ---------- BACK BUTTON ---------- */
+
+.backButton{
+text-decoration:none;
+color:#00e5ff;
+font-weight:600;
+padding:8px 14px;
+border-radius:8px;
+border:1px solid rgba(0,229,255,0.5);
+
+transition:0.3s;
+}
+
+.backButton:hover{
+background:#00e5ff;
+color:black;
+box-shadow:
+0 0 12px #00e5ff,
+0 0 20px #00e5ff;
+}
+
+/* ---------- MAP TITLE ---------- */
+
+.mapTitle{
+margin:0;
+font-size:18px;
+letter-spacing:1px;
+}
+
+/* ---------- LOADING ---------- */
+
+.loading{
+text-align:center;
+padding:50px;
+font-size:18px;
+opacity:0.85;
+}
+
+/* ---------- MAP FIX ---------- */
+
+.leaflet-container{
+border-radius:10px;
+overflow:hidden;
 }

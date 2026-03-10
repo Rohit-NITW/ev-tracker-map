@@ -1,9 +1,12 @@
-import LiveMap from "./components/LiveMap";
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import MapPage from "./pages/MapPage";
 
 export default function App() {
   return (
-    <div style={{ height: "100vh", width: "100%" }}>
-      <LiveMap />
-    </div>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/map" element={<MapPage />} />
+    </Routes>
   );
 }

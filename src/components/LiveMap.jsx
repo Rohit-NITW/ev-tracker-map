@@ -1,58 +1,57 @@
 import { useEffect, useState } from "react";
 import { MapContainer, TileLayer, Marker } from "react-leaflet";
 import { ref, onValue } from "firebase/database";
-import { database } from "../firebase";
+import { db } from "../firebase";
 import "leaflet/dist/leaflet.css";
-import L from "leaflet";
-
-delete L.Icon.Default.prototype._getIconUrl;
-
-L.Icon.Default.mergeOptions({
-iconRetinaUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png",
-iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
-shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
-});
 
 export default function LiveMap() {
 
-// Initial location: NIT Warangal
-const [location, setLocation] = useState({
-latitude: 17.9835,
-longitude: 79.5312
-});
+  const [location, setLocation] = useState(null);
 
-useEffect(() => {
+  useEffect(() => {
 
-const locationRef = ref(database, "location");
+    const locationRef = ref(db, "location");
 
-onValue(locationRef, (snapshot) => {
-  const data = snapshot.val();
+    onValue(locationRef, (snapshot) => {
 
-  if (data) {
-    setLocation({
-      latitude: data.latitude,
-      longitude: data.longitude
+      const data = snapshot.val();
+      console.log("Firebase data:", data);
+
+      if (!data) return;
+
+      const lat = Number(data.latitude);
+      const lng = Number(data.longitude);
+
+      if (!isNaN(lat) && !isNaN(lng)) {
+        setLocation([lat, lng]);
+      }
+
     });
+
+  }, []);
+
+  if (!location) {
+    return (
+      <div style={{textAlign:"center", padding:"40px"}}>
+        Waiting for location data...
+      </div>
+    );
   }
-});
 
-}, []);
+  return (
+    <MapContainer
+      center={location}
+      zoom={16}
+      style={{ height: "90vh", width: "100%" }}
+    >
 
-return (
-<MapContainer
-center={[location.latitude, location.longitude]}
-zoom={16}
-style={{ height: "100vh", width: "100%" }}
->
+      <TileLayer
+        attribution="OpenStreetMap"
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+      />
 
-  <TileLayer
-    attribution="© OpenStreetMap"
-    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-  />
+      <Marker position={location} />
 
-  <Marker position={[location.latitude, location.longitude]} />
-
-</MapContainer>
-
-);
+    </MapContainer>
+  );
 }

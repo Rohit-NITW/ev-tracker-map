@@ -14,4 +14,4 @@ measurementId: "G-N7CJ2D5BY1"
 
 const app = initializeApp(firebaseConfig);
 
-export const database = getDatabase(app);
+export const db = getDatabase(app);
