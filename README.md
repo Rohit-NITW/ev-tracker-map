@@ -1,16 +1,84 @@
-# React + Vite
+# 🚗 EV Live Tracking System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A real-time IoT-based vehicle tracking system that captures GPS data using an ESP32 and visualizes it on a live web dashboard.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🔴 Live Demo
+https://ev-tracker-map.vercel.app
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## ⚙️ Tech Stack
 
-## Expanding the ESLint configuration
+### Hardware
+- ESP32
+- GPS Module (NEO-6M)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Backend / Cloud
+- Firebase Realtime Database
+
+### Frontend
+- React + Vite
+- Leaflet Maps
+
+### Deployment
+- Vercel
+
+---
+
+## 📡 How It Works
+
+1. ESP32 reads real-time GPS coordinates  
+2. Sends data to Firebase Realtime Database  
+3. React app fetches live data  
+4. Leaflet map updates location in real-time  
+
+**Pipeline:** ESP32 → Firebase → React Dashboard → Live Map
+
+---
+
+## ✨ Features
+
+- Real-time vehicle tracking  
+- Live map visualization  
+- Cloud-based data synchronization  
+- Lightweight and responsive UI  
+
+---
+
+## 📸 Screenshots
+
+![Dashboard](./assets/dashboard.png)
+![Live Map](./assets/map.png)
+![Hardware Setup](./assets/hardware.jpg)
+
+---
+
+## 🚀 Installation & Setup
+
+git clone https://github.com/your-username/your-repo  
+cd your-repo  
+npm install  
+npm run dev  
+
+---
+
+## 📌 Future Improvements
+
+- Route history tracking  
+- Speed and distance analytics  
+- Multiple vehicle tracking  
+- Mobile responsiveness improvements  
+
+---
+
+## 👨‍💻 Author
+
+Rohit Y
+
+---
+
+## ⭐ Note
+
+This project demonstrates an end-to-end IoT pipeline from embedded hardware to cloud database to a real-time web interface.
