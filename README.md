@@ -51,7 +51,8 @@ https://ev-tracker-map.vercel.app
 
 ![Dashboard](./assets/dashboard.png)
 ![Live Map](./assets/map.png)
-![Hardware Setup](./assets/hardware.jpg)
+![Hardware Setup](./assets/hardware.jpeg)
+![Firebase data](./assets/firebase.png)
 
 ---
 
