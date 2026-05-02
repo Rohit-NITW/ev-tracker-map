@@ -57,7 +57,7 @@ https://ev-tracker-map.vercel.app
 
 ## 🚀 Installation & Setup
 
-git clone https://github.com/your-username/your-repo  
+git clone https://github.com/Rohit-NITW/ev-tracker-map.git 
 cd your-repo  
 npm install  
 npm run dev  
